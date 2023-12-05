@@ -25,11 +25,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            for (const message of ${{ steps.action.outputs.PRCommentMessage }}){
-                github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: "PR comment"
-              })
-            }
+            github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: "PR comment"
+          })
