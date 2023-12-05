@@ -21,16 +21,17 @@ jobs:
         with:
          fetch-depth: '0'
 
-      - name: PR Comment
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: "message"
-            })            
+      - name: PR review Comment
+        run: |
+            gh api \
+              --method POST \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              /repos/red-eyes-22/kafka-topic-example/pulls/${{ github.event.number }}/reviews \
+              -f body="abc" \
+              -f event='REQUEST_CHANGES' 
+        env:
+          GH_TOKEN: ${{ github.token }}
             
       - name: Fail github check on PR Comment or Review Comments
         uses: actions/github-script@v6
