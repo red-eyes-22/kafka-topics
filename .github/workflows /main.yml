@@ -1,0 +1,35 @@
+name: PR workflow
+
+on: 
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    paths:
+      - 'abc/*'
+
+   
+jobs:
+  kafka-topic-config-validator:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+    name: workflow
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: '0'
+
+      - name: PR Comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            for (const message of ${{ steps.action.outputs.PRCommentMessage }}){
+                github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: "PR comment"
+              })
+            }
