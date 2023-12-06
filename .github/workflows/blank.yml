@@ -33,4 +33,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-
+      - name: Bot Approval
+        uses: hmarr/auto-approve-action@v3
+        with:
+          pull-request-number: ${{ github.event.inputs.pullRequestNumber }}
