@@ -22,3 +22,8 @@ jobs:
          fetch-depth: '0'
 
       - run: echo "true"
+
+      - name: Bot Approval
+        uses: hmarr/auto-approve-action@v3
+        with:
+          pull-request-number: ${{ github.event.inputs.pullRequestNumber }}
