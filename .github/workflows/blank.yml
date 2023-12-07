@@ -39,3 +39,4 @@ jobs:
         uses: hmarr/auto-approve-action@v3
         with:
           pull-request-number: ${{ github.event.inputs.pullRequestNumber }}
+          github-token: ${{ github.token }}
