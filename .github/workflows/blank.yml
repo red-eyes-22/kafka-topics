@@ -3,10 +3,7 @@ name: PR workflow
 on: 
   pull_request:
     types: [opened, reopened, edited, synchronize]
-    paths:
-      - 'abc/*.json'
 
-    
 jobs:
   kafka-topic-config-validator:
     runs-on: ubuntu-latest
