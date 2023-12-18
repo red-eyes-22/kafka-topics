@@ -21,3 +21,9 @@ jobs:
          fetch-depth: '0'
 
       - run: echo "dir2"
+
+      - name: Fail github check on PR Comment or Review Comments
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed('')
