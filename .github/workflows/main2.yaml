@@ -20,4 +20,4 @@ jobs:
         with:
          fetch-depth: '0'
 
-      - run: echo "true"
+      - run: echo "dir2"
