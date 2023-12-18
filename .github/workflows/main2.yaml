@@ -1,0 +1,23 @@
+name: PR workflow
+
+on: 
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    paths:
+      - 'def/*.json'
+      
+jobs:
+  kafka-topic-config-validator:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+    name: workflow
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+         fetch-depth: '0'
+
+      - run: echo "true"
