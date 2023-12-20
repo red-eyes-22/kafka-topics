@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, reopened, edited, synchronize]
     paths:
-      - 'abc/*.json'
+      - 'def/*.json'
       
 jobs:
   kafka-topic-config-validator:
@@ -20,4 +20,10 @@ jobs:
         with:
          fetch-depth: '0'
 
-      - run: echo "true"
+      - run: echo "dir2"
+
+      - name: Fail github check on PR Comment or Review Comments
+        uses: actions/github-script@v6
+        with:
+          script: |
+            core.setFailed('')
