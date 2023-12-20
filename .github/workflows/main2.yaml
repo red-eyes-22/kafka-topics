@@ -21,7 +21,6 @@ jobs:
          fetch-depth: '0'
 
       - name: PR review Comment
-        if: ${{ steps.action.outputs.reviewComment == 'true' }}
         run: |
             gh api \
               --method POST \
