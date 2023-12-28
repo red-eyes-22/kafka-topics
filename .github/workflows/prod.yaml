@@ -1,0 +1,18 @@
+name: PR workflow
+
+on: 
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    paths:
+      - 'production/*.json'
+      
+jobs:
+  kafka-topic-config-validator:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: read
+    name: workflow
+    steps:
+      - run: echo "true"
