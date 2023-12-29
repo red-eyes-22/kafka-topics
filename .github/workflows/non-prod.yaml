@@ -4,8 +4,8 @@ on:
   pull_request:
     types: [opened, reopened, edited, synchronize]
     paths:
-      - 'dev/backend/*.json'
-      - 'staging/backend/*.json'
+      - 'dev/*.json'
+      - 'staging/*.json'
       
 jobs:
   kafka-topic-config-validator:
